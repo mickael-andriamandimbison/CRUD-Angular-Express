@@ -25,7 +25,15 @@ class EntityService {
     return entity;
   }
 
-  static async updateEntityById(id) {}
+  static async updateEntityById(id, data) {
+    const entity = await Entity.findByPk(id);
+
+    if (!entity) throw createErr("aucun entité", 404);
+
+    const entityupdate = await entity.update(data);
+
+    return entityupdate;
+  }
 
   static async deleteEntityById(id) {}
 }

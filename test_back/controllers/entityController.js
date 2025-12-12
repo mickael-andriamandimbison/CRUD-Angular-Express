@@ -33,6 +33,18 @@ class EntityController {
       return erroHandler(res, error);
     }
   }
+
+  static async updateEntityById(req,res){
+    try {
+        const id = req.params.id;
+        const data = req.body
+
+        const entity = await EntityService.updateEntityById(id,data)
+        return Result.Ok(res, "modification entity reussi", entity);
+    } catch (error) {
+        return erroHandler(res, error);
+    }
+  }
 }
 
 module.exports = EntityController;
