@@ -43,6 +43,16 @@ class UserController {
       return erroHandler(res, error);
     }
   }
+
+  static async deleteUser(req,res){
+    try {
+        const id = req.params.id
+        await UserService.deleteUserById(id)
+        return Result.Ok(res,'user supprimer avec succes')
+    } catch (error) {
+        return erroHandler(res, error);
+    }
+  }
 }
 
 module.exports = UserController;

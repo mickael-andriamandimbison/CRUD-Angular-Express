@@ -36,8 +36,12 @@ class UserService{
         return userUptade
     }
 
-    static deleteUserById(id){
+    static async deleteUserById(id){
+        const user = await User.findByPk(id)
+        if(!user) throw createErr('aucun user',404)
 
+        await user.destroy()
+        return null
     }
 }
 
