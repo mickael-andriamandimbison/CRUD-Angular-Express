@@ -45,6 +45,16 @@ class EntityController {
         return erroHandler(res, error);
     }
   }
+
+  static async deleteEntityById(req,res){
+    try {
+      const id = req.params.id;
+      const entity = await EntityService.deleteEntityById(id);
+      return Result.Ok(res, "detail entity", entity);
+    } catch (error) {
+      return erroHandler(res, error);
+    }
+  }
 }
 
 module.exports = EntityController;

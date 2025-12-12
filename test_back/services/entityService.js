@@ -35,7 +35,13 @@ class EntityService {
     return entityupdate;
   }
 
-  static async deleteEntityById(id) {}
+  static async deleteEntityById(id) {
+     const entity = await Entity.findByPk(id);
+    if (!entity) throw createErr("aucun entité", 404);
+
+    await entity.destroy()
+    return null
+  }
 }
 
 module.exports = EntityService;
