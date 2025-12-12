@@ -30,17 +30,22 @@ class EntityService {
 
     if (!entity) throw createErr("aucun entité", 404);
 
+    const verif = await Entity.findOne({
+      where: { entityname: data.entityname },
+    });
+
+    if (verif) throw createErr("nom deja utilisé entity", 409);
     const entityupdate = await entity.update(data);
 
     return entityupdate;
   }
 
   static async deleteEntityById(id) {
-     const entity = await Entity.findByPk(id);
+    const entity = await Entity.findByPk(id);
     if (!entity) throw createErr("aucun entité", 404);
 
-    await entity.destroy()
-    return null
+    await entity.destroy();
+    return null;
   }
 }
 
