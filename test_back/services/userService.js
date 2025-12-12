@@ -8,9 +8,11 @@ class UserService{
         const isExist = await User.findOne({where : {
             email:data.email
         }})
-        if(isExist) return createErr('email deja utiliseé',409)
+
+        if(isExist) throw createErr('email deja utiliseé',409)
         
         const newUser = await User.create(data)
+
         return newUser
     }
 
@@ -21,12 +23,17 @@ class UserService{
 
     static async getUserById(id){
         const user = await User.findByPk(id)
-        if(!user) return createErr('Aucun user correspondant ',404)
+        if(!user) throw createErr('Aucun user correspondant ',404)
         return user
     }
 
-    static updateUserById(id){
+    static async updateUserById(id,data){
+        const user = await User.findByPk(id)
+        if(!user) throw createErr('aucun user',404)
+        
+        const userUptade = await user.update(data)
 
+        return userUptade
     }
 
     static deleteUserById(id){
