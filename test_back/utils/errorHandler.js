@@ -7,6 +7,8 @@ function errorHandler(res, error) {
   switch (status) {
     case 404:
       return Result.notFound(res, message);
+    case 409:
+      return Result.conflict(res, message);
     default:
       return Result.error(res, message); 
   }

@@ -25,6 +25,14 @@ class Result {
     });
   }
 
+  static conflict(res, message = "Conflit de données") {
+    return res.status(409).json({
+      success: false,
+      status: 409,
+      message,
+    });
+  }
+
   static error(res, error = "Erreur interne du serveur", status = 500) {
     const message = typeof error === "string" ? error : error.message;
 
