@@ -14,6 +14,15 @@ class EntityController {
       return erroHandler(res, error);
     }
   }
+
+  static async getAllEntity(req, res) {
+      try {
+        const list = await EntityService.getAllEntity();
+        return Result.Ok(res, "liste des users", list);
+      } catch (error) {
+        return erroHandler(res, error);
+      }
+    }
 }
 
 module.exports = EntityController
