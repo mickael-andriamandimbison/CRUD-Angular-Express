@@ -6,8 +6,16 @@ const sequelize = require("./middlewares/dbConnection");
 const userRoute = require('./routes/userRoute')
 const entityRoute = require('./routes/entityRoute')
 const userEntityRoute = require('./routes/user_entityRoute')
+const cors = require('cors')
 
 app.use(express.json());
+app.use(cors({
+  origin : 'http://127.0.0.1:4200',
+  methods : ['GET','POST','PUT','DELETE'],
+  allowedHeaders : ['Content-Type', 'Authorization']
+}))
+
+
 app.use('/api/user',userRoute)
 app.use('/api/entity',entityRoute)
 app.use('/api/userEntity',userEntityRoute)
