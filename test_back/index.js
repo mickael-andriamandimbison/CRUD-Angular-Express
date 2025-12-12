@@ -4,9 +4,11 @@ const port = process.env.PORT || 3000;
 const app = express();
 const sequelize = require("./middlewares/dbConnection");
 const userRoute = require('./routes/userRoute')
+const entityRoute = require('./routes/entityRoute')
 
 app.use(express.json());
 app.use('/api/user',userRoute)
+app.use('/api/entity',entityRoute)
 
 
 require("./models/association")
