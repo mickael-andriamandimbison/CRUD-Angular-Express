@@ -5,10 +5,12 @@ const app = express();
 const sequelize = require("./middlewares/dbConnection");
 const userRoute = require('./routes/userRoute')
 const entityRoute = require('./routes/entityRoute')
+const userEntityRoute = require('./routes/user_entityRoute')
 
 app.use(express.json());
 app.use('/api/user',userRoute)
 app.use('/api/entity',entityRoute)
+app.use('/api/userEntity',userEntityRoute)
 
 
 require("./models/association")
