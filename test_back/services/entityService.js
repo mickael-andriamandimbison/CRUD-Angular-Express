@@ -1,9 +1,8 @@
-const { where } = require('sequelize')
-const Entity = require('../models/entity')
-const createErr = require ("../utils/createError")
+const { where } = require("sequelize");
+const Entity = require("../models/entity");
+const createErr = require("../utils/createError");
 
 class EntityService {
-
   static async createEntity(data) {
     const isExist = await Entity.findOne({
       where: {
@@ -16,11 +15,15 @@ class EntityService {
   }
 
   static async getAllEntity() {
-    const list = await Entity.findAll()
-    return list
+    const list = await Entity.findAll();
+    return list;
   }
 
-  static async getEntityById(id) {}
+  static async getEntityById(id) {
+    const entity = await Entity.findByPk(id);
+    if (!entity) throw createErr("aucun entity", 404);
+    return entity;
+  }
 
   static async updateEntityById(id) {}
 

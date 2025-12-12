@@ -4,5 +4,7 @@ const EntityController = require("../controllers/entityController")
 
 router.post('/create-entity',EntityController.createEntity)
 router.get('/list-entity',EntityController.getAllEntity)
+router.get('/detail-entity/:id',EntityController.getEntityById)
+
 
 module.exports = router

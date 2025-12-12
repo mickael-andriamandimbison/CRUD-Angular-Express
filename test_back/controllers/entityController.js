@@ -16,13 +16,23 @@ class EntityController {
   }
 
   static async getAllEntity(req, res) {
-      try {
-        const list = await EntityService.getAllEntity();
-        return Result.Ok(res, "liste des users", list);
-      } catch (error) {
-        return erroHandler(res, error);
-      }
+    try {
+      const list = await EntityService.getAllEntity();
+      return Result.Ok(res, "liste des users", list);
+    } catch (error) {
+      return erroHandler(res, error);
     }
+  }
+
+  static async getEntityById(req, res) {
+    try {
+      const id = req.params.id;
+      const entity = await EntityService.getEntityById(id);
+      return Result.Ok(res, "detail entity", entity);
+    } catch (error) {
+      return erroHandler(res, error);
+    }
+  }
 }
 
-module.exports = EntityController
+module.exports = EntityController;
