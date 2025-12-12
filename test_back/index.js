@@ -3,8 +3,11 @@ const express = require("express");
 const port = process.env.PORT || 3000;
 const app = express();
 const sequelize = require("./middlewares/dbConnection");
+const userRoute = require('./routes/userRoute')
 
 app.use(express.json());
+app.use('/api/user',userRoute)
+
 
 require("./models/association")
 sequelize

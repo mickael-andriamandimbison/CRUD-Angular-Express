@@ -1,9 +1,10 @@
-const User = require(('../models/user'))
-const Result = 
+const User = require('../models/user')
+const createErr = require ("../utils/createError")
 
 class UserService{
-    static getAllUser(){
-        const listUser = await 
+    static async getAllUser(){
+        const list = await User.findAll()
+        return list
     }
 
     static getUserById(id){
@@ -18,3 +19,5 @@ class UserService{
 
     }
 }
+
+module.exports = UserService
