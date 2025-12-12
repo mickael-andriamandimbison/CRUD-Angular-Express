@@ -1,10 +1,19 @@
-require("dotenv").config()
-const express = require("express")
-const port = process.env.PORT || 3000
-const app = express()
+require("dotenv").config();
+const express = require("express");
+const port = process.env.PORT || 3000;
+const app = express();
+const sequelize = require("./middlewares/dbConnection");
 
-app.use(express.json())
+app.use(express.json());
 
-app.get('/',(req,res)=>res.send("l'api fonctionne"))
+require("./models/association")
+sequelize
+  .sync({ force: false })
+  .then(() => console.log("Table synchronisé"))
+  .catch((err) => console.log("Erreur lors de la creation des tables ", err));
 
-app.listen(port,()=>console.log("Le serveur back-end est lancé sur le port "+port))
+app.get("/", (req, res) => res.send("l'api fonctionne"));
+
+app.listen(port, () =>
+  console.log("Le serveur back-end est lancé sur le port " + port)
+);
