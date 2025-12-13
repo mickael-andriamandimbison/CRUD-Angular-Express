@@ -13,13 +13,11 @@ export class UserService {
   private readonly apiUrl: string = environment.apiUrl + '/user';
 
   public getAllUser(): Observable<IApiRes> {
-    return this._http.get<IApiRes>(`${this.apiUrl}/list-user`).pipe(tap((res) => console.log('user list ', res)))
+    return this._http.get<IApiRes>(`${this.apiUrl}/list-user`);
   }
 
   public getUserById(id: string): Observable<IApiRes> {
-    return this._http
-      .get<IApiRes>(`${this.apiUrl}/detail-user/${id}`)
-      .pipe(tap((user) => console.log('user detail ', user)));
+    return this._http.get<IApiRes>(`${this.apiUrl}/detail-user/${id}`);
   }
 
   public deletUser(id: string): Observable<null> {
@@ -27,14 +25,10 @@ export class UserService {
   }
 
   public updateUserById(id: string, data: IUser): Observable<IApiRes> {
-    return this._http
-      .put<IApiRes>(`${this.apiUrl}/update-user/${id}`,data)
-      .pipe(tap((user) => console.log('user modifier ', user)));
+    return this._http.put<IApiRes>(`${this.apiUrl}/update-user/${id}`, data);
   }
 
   public addUser(user: IUser): Observable<IApiRes> {
-    return this._http
-      .post<IApiRes>(`${this.apiUrl}/create-user`, user)
-      .pipe(tap((user) => console.log('user creer ', user)));
+    return this._http.post<IApiRes>(`${this.apiUrl}/create-user`, user);
   }
 }

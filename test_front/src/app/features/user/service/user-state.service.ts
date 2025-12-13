@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { IUser } from './../../../core/interfaces/User';
 import { inject, Injectable, signal } from '@angular/core';
 import { UserService } from '../../../core/services/user/user.service';
@@ -8,6 +9,7 @@ import { map, single } from 'rxjs';
 })
 export class UserStateService {
   private _userService = inject(UserService);
+  private router = inject(Router)
 
   loading = signal(false);
   users = signal<IUser[]>([]);
@@ -23,7 +25,6 @@ export class UserStateService {
         this.loading.set(false);
         const userlist = Array.isArray(res.data) ? res.data : [];
         this.users.set(userlist);
-        console.log("userlist",userlist)
       },
       error: (err) => {
         this.loading.set(false);
@@ -54,6 +55,7 @@ export class UserStateService {
       next: (res) => {
         this.loading.set(false);
         this.users.update((u) => [...u, res]);
+        this.router.navigate(['/users'])
       },
       error: (err) => {
         this.error.set(err);

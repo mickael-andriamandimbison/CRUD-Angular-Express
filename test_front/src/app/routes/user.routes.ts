@@ -10,6 +10,10 @@ export const userRoute : Routes = [
     loadComponent : ()=>import('../features/user/components/user-form/user-form.component').then((m)=>m.UserFormComponent)
   },
   {
+    path : 'modifie-user/:id',
+    loadComponent : ()=>import('../features/user/components/user-form/user-form.component').then((m)=>m.UserFormComponent)
+  },
+  {
     path : '',
     redirectTo : 'list-user',
     pathMatch : 'full'
@@ -19,5 +23,5 @@ export const userRoute : Routes = [
     redirectTo : 'list-user',
     pathMatch : 'full'
   }
-  
+
 ]

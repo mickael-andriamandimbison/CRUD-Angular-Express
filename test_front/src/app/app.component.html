@@ -26,8 +26,8 @@
                </svg>
             </button>
             <ul id="dropdown-user" class="hidden py-2 space-y-2">
-               <li><a routerLink="/users/list" class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]">Liste User</a></li>
-               <li><a routerLink="/users/add" class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]">Ajout User</a></li>
+               <li><a routerLink="/users/list-user" class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]">Liste User</a></li>
+               <li><a routerLink="/users/ajout-user" class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]">Ajout User</a></li>
             </ul>
          </li>
 
@@ -41,12 +41,12 @@
                </svg>
             </button>
             <ul id="dropdown-entity" class="hidden py-2 space-y-2">
-               <li><a routerLink="/entities/list" class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]">Liste Entity</a></li>
-               <li><a routerLink="/entities/add" class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]">Ajout Entity</a></li>
+               <li><a [routerLink]="'/entity/list-entity'" class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]">Liste Entity</a></li>
+               <li><a [routerLink]="'/entity/ajout-entity'" class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]">Ajout Entity</a></li>
             </ul>
          </li>
 
-         <!-- UserEntity Dropdown -->
+         <!-- UserEntity Dropdown
          <li>
             <button type="button" class="flex items-center w-full justify-between px-2 py-2 rounded-lg hover:bg-[#033049] group"
                     aria-controls="dropdown-user-entity" data-collapse-toggle="dropdown-user-entity">
@@ -56,10 +56,10 @@
                </svg>
             </button>
             <ul id="dropdown-user-entity" class="hidden py-2 space-y-2">
-               <li><a routerLink="/user-entities/list" class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]">Liste UserEntity</a></li>
-               <li><a routerLink="/user-entities/add" class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]">Ajout UserEntity</a></li>
+               <li><a routerLink="/user-entity/list-user" class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]">Liste UserEntity</a></li>
+               <li><a routerLink="/user-entity/add" class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]">Ajout UserEntity</a></li>
             </ul>
-         </li>
+         </li> -->
 
       </ul>
    </div>

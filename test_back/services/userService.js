@@ -31,14 +31,9 @@ class UserService {
   static async updateUserById(id, data) {
     const user = await User.findByPk(id);
     if (!user) throw createErr("aucun user", 404);
-
-    const verif = await User.findOne({
-      where: { email: data.email },
-    });
-
-    if (verif) throw createErr("email deja utilisé", 409);
+    
     const userUptade = await user.update(data);
-
+    
     return userUptade;
   }
 
