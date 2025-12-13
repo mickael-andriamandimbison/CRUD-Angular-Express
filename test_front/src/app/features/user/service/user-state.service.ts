@@ -9,7 +9,7 @@ import { map, single } from 'rxjs';
 })
 export class UserStateService {
   private _userService = inject(UserService);
-  private router = inject(Router)
+  private router = inject(Router);
 
   loading = signal(false);
   users = signal<IUser[]>([]);
@@ -39,7 +39,7 @@ export class UserStateService {
     this._userService.getUserById(id).subscribe({
       next: (user) => {
         this.selectedUser.set(user.data);
-        console.log("userdetail",this.selectedUser())
+        console.log('userdetail', this.selectedUser());
       },
       error: (err) => {
         this.loading.set(false);
@@ -51,16 +51,19 @@ export class UserStateService {
   public AddUser(user: IUser) {
     this.loading.set(true);
     this.error.set(null);
-    this._userService.addUser(user).pipe(map((r)=>r.data[0])).subscribe({
-      next: (res) => {
-        this.loading.set(false);
-        this.users.update((u) => [...u, res]);
-        this.router.navigate(['/users'])
-      },
-      error: (err) => {
-        this.error.set(err);
-      },
-    });
+    this._userService
+      .addUser(user)
+      .pipe(map((r) => r.data[0]))
+      .subscribe({
+        next: (res) => {
+          this.loading.set(false);
+          this.users.update((u) => [...u, res]);
+          this.router.navigate(['/users']);
+        },
+        error: (err) => {
+          this.error.set(err);
+        },
+      });
   }
 
   public updateUser(id: string, data: IUser) {
@@ -72,6 +75,7 @@ export class UserStateService {
         this.users.update((lisetUser) =>
           lisetUser.map((user) => (user.id_User === data.id_User ? data : user))
         );
+        this.router.navigate(['/users']);
       },
       error: (err) => {
         this.loading.set(false);
@@ -88,7 +92,7 @@ export class UserStateService {
       next: (res) => {
         this.loading.set(false);
         this.succesMsg.set('Suppression avec succés');
-        this.users.update((list)=>list.filter((user)=>user.id_User !== id))
+        this.users.update((list) => list.filter((user) => user.id_User !== id));
       },
       error: (err) => {
         this.error.set(err);

@@ -3,12 +3,14 @@ import { EntityService } from '../../../core/services/entity/entity.service';
 import { map } from 'rxjs';
 import { IEntity } from '../../../core/interfaces/Entity';
 import { IApiRes } from '../../../core/interfaces/ApiResponse';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EntityStateService {
   private _entityService = inject(EntityService);
+  private router = inject(Router);
 
   loading = signal(false);
   entitys = signal<IEntity[]>([]);
@@ -60,6 +62,7 @@ export class EntityStateService {
         next: (res) => {
           this.loading.set(false);
           this.entitys.update((list) => [...list, res]);
+          this.router.navigate(['/entity']);
         },
         error: (err) => {
           this.loading.set(false);
@@ -80,6 +83,7 @@ export class EntityStateService {
             item.id_Entity === id ? { ...item, ...entity } : item
           )
         );
+        this.router.navigate(['/entity']);
       },
       error: (err) => {
         this.loading.set(false);
@@ -96,12 +100,12 @@ export class EntityStateService {
       next: () => {
         this.loading.set(false);
         this.successMsg.set('Suppression avec succès');
-        this.entitys.update((user)=>user.filter((r)=>r.id_Entity !== id))
+        this.entitys.update((user) => user.filter((r) => r.id_Entity !== id));
       },
       error: (err) => {
         this.loading.set(false);
         this.error.set(err?.message || 'Erreur inconnue');
-        this.entitys.update((user)=>user.filter((r)=>r.id_Entity !== id))
+        this.entitys.update((user) => user.filter((r) => r.id_Entity !== id));
       },
     });
   }

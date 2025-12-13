@@ -24,12 +24,12 @@ export const entityRoute: Routes = [
   },
   {
     path: '',
-    redirectTo: 'list-user',
+    redirectTo: 'list-entity',
     pathMatch: 'full',
   },
   {
     path: '**',
-    redirectTo: 'list-user',
+    redirectTo: 'list-entity',
     pathMatch: 'full',
   },
 ];

@@ -3,12 +3,14 @@ import { UserEntityService } from '../../../core/services/user-entity/user-entit
 import { map } from 'rxjs';
 import { IUserEntity } from '../../../core/interfaces/UserEntity';
 import { IApiRes } from '../../../core/interfaces/ApiResponse';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserEntityStateService {
   private _userEntityService = inject(UserEntityService);
+  private router = inject(Router);
 
   loading = signal(false);
   userEntities = signal<IUserEntity[]>([]);
@@ -60,6 +62,7 @@ export class UserEntityStateService {
         next: (res) => {
           this.loading.set(false);
           this.userEntities.update((list) => [...list, res]);
+          this.router.navigate(['/user-entity']);
         },
         error: (err) => {
           this.loading.set(false);
@@ -80,6 +83,7 @@ export class UserEntityStateService {
             item.id_userEntity === id ? { ...item, ...data } : item
           )
         );
+        this.router.navigate(['/user-entity']);
       },
       error: (err) => {
         this.loading.set(false);

@@ -27,6 +27,8 @@
 >
   <div class="h-full px-3 py-4 overflow-y-auto">
     <ul class="space-y-2 font-medium">
+
+      <!-- User Menu -->
       <li>
         <button
           type="button"
@@ -43,32 +45,34 @@
             viewBox="0 0 24 24"
             stroke="currentColor"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="m19 9-7 7-7-7"
-            />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/>
           </svg>
         </button>
         <ul id="dropdown-user" class="hidden py-2 space-y-2">
           <li>
             <a
               routerLink="/users/list-user"
-              class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]"
-              >Liste User</a
+              routerLinkActive="bg-[#033049] text-white"
+              [routerLinkActiveOptions]="{ exact: true }"
+              class="pl-10 block px-2 py-1 rounded hover:bg-[#033049] hover:text-white"
             >
+              Liste User
+            </a>
           </li>
           <li>
             <a
               routerLink="/users/ajout-user"
-              class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]"
-              >Ajout User</a
+              routerLinkActive="bg-[#033049] text-white"
+              [routerLinkActiveOptions]="{ exact: true }"
+              class="pl-10 block px-2 py-1 rounded hover:bg-[#033049] hover:text-white"
             >
+              Ajout User
+            </a>
           </li>
         </ul>
       </li>
 
+      <!-- Entity Menu -->
       <li>
         <button
           type="button"
@@ -85,32 +89,34 @@
             viewBox="0 0 24 24"
             stroke="currentColor"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="m19 9-7 7-7-7"
-            />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/>
           </svg>
         </button>
         <ul id="dropdown-entity" class="hidden py-2 space-y-2">
           <li>
             <a
-              [routerLink]="'/entity/list-entity'"
-              class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]"
-              >Liste Entity</a
+              routerLink="/entity/list-entity"
+              routerLinkActive="bg-[#033049] text-white"
+              [routerLinkActiveOptions]="{ exact: true }"
+              class="pl-10 block px-2 py-1 rounded hover:bg-[#033049] hover:text-white"
             >
+              Liste Entity
+            </a>
           </li>
           <li>
             <a
-              [routerLink]="'/entity/ajout-entity'"
-              class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]"
-              >Ajout Entity</a
+              routerLink="/entity/ajout-entity"
+              routerLinkActive="bg-[#033049] text-white"
+              [routerLinkActiveOptions]="{ exact: true }"
+              class="pl-10 block px-2 py-1 rounded hover:bg-[#033049] hover:text-white"
             >
+              Ajout Entity
+            </a>
           </li>
         </ul>
       </li>
 
+      <!-- UserEntity Menu -->
       <li>
         <button
           type="button"
@@ -127,31 +133,33 @@
             viewBox="0 0 24 24"
             stroke="currentColor"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="m19 9-7 7-7-7"
-            />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/>
           </svg>
         </button>
         <ul id="dropdown-user-entity" class="hidden py-2 space-y-2">
           <li>
             <a
-              [routerLink]="'/user-entity/list-user'"
-              class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]"
-              >Liste UserEntity</a
+              routerLink="/user-entity/list-user-entity"
+              routerLinkActive="bg-[#033049] text-white"
+              [routerLinkActiveOptions]="{ exact: true }"
+              class="pl-10 block px-2 py-1 rounded hover:bg-[#033049] hover:text-white"
             >
+              Liste UserEntity
+            </a>
           </li>
           <li>
             <a
-              [routerLink]="'/user-entity/ajout-user-entity'"
-              class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]"
-              >Ajout UserEntity</a
+              routerLink="/user-entity/ajout-user-entity"
+              routerLinkActive="bg-[#033049] text-white"
+              [routerLinkActiveOptions]="{ exact: true }"
+              class="pl-10 block px-2 py-1 rounded hover:bg-[#033049] hover:text-white"
             >
+              Ajout UserEntity
+            </a>
           </li>
         </ul>
       </li>
+
     </ul>
   </div>
 </aside>

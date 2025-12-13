@@ -1,6 +1,13 @@
-import { Component, effect, inject, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  effect,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { UserStateService } from '../../service/user-state.service';
 import { Router, RouterModule } from '@angular/router';
+import { initFlowbite, initModals } from 'flowbite';
 
 @Component({
   selector: 'app-user-list',
@@ -8,24 +15,29 @@ import { Router, RouterModule } from '@angular/router';
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.scss',
 })
-export class UserListComponent implements OnInit{
-
-  public userStateService = inject(UserStateService)
-  public router = inject(Router)
+export class UserListComponent implements OnInit, AfterViewInit {
+  public userStateService = inject(UserStateService);
+  public router = inject(Router);
 
   ngOnInit(): void {
-    this.userStateService.getAllUser()
+    this.userStateService.getAllUser();
   }
 
-  public getDetails(id:string){
-    this.userStateService.getUserByid(id)
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      initFlowbite()
+    }, 1000);
   }
 
-  public deleteUser(id:string){
-    this.userStateService.deleteUserById(id)
+  public getDetails(id: string) {
+    this.userStateService.getUserByid(id);
   }
 
-  public navigToFom(id:string){
-    this.router.navigate(['/users/modifie-user/',id])
+  public deleteUser(id: string) {
+    this.userStateService.deleteUserById(id);
+  }
+
+  public navigToFom(id: string) {
+    this.router.navigate(['/users/modifie-user/', id]);
   }
 }

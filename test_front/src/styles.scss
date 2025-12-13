@@ -1,8 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
-@import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
-@import "flowbite/src/themes/default";
-@import "boxicons";
-@plugin "flowbite/plugin";
-@source "../node_modules/flowbite";
+/* You can add global styles to this file, and also use other style files */
+@use "tailwindcss";
+@use "flowbite/src/themes/default";
+@use "boxicons";
+
 
