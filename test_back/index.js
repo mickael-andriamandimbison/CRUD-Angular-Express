@@ -10,7 +10,7 @@ const cors = require('cors')
 
 app.use(express.json());
 app.use(cors({
-  origin : 'http://127.0.0.1:4200',
+  origin : 'http://localhost:4200',
   methods : ['GET','POST','PUT','DELETE'],
   allowedHeaders : ['Content-Type', 'Authorization']
 }))
