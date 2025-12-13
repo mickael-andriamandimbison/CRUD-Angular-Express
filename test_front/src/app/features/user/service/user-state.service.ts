@@ -88,6 +88,7 @@ export class UserStateService {
       next: (res) => {
         this.loading.set(false);
         this.succesMsg.set('Suppression avec succés');
+        this.users.update((list)=>list.filter((user)=>user.id_User !== id))
       },
       error: (err) => {
         this.error.set(err);

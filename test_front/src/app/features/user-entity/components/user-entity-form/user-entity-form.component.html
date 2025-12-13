@@ -1,1 +1,62 @@
-<p>user-entity-form works!</p>
+<div class="flex items-center justify-center p-12">
+  <div class="mx-auto w-full max-w-[550px]">
+    <form class="max-w-sm mx-auto" [formGroup]="userEntityForm">
+      <div class="mb-5">
+        <div class="mb-5">
+          <label
+            for="idUser"
+            class="block mb-2.5 text-sm text-white font-medium text-heading"
+            >Utilisateur</label
+          >
+          <select
+            formControlName="id_User"
+            class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+          >
+            <option value="" disabled>Selectionner un utilisateur</option>
+            @for(user of userStateService.users(); track $index){
+            <option [value]="user.id_User">{{ user.username }}</option>
+            }
+          </select>
+          @if(userEntityForm.get('id_User')?.touched &&
+          userEntityForm.get('id_User')?.invalid){
+          <p class="mt-1 text-sm text-red-400 flex items-center gap-1">
+            <span class="font-medium">⚠</span>
+            L'utilisateur est requis
+          </p>
+          }
+        </div>
+        <div class="mb-5">
+          <label
+            for="idEntity"
+            class="block mb-2.5 text-sm text-white font-medium text-heading"
+            >Entité</label
+          >
+          <select
+            formControlName="id_Entity"
+            class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+          >
+            <option value="" disabled>Selectionner une entité</option>
+            @for(entity of entityStateService.entitys(); track $index){
+            <option [value]="entity.id_Entity">{{ entity.entityname }}</option>
+            }
+          </select>
+          @if(userEntityForm.get('id_Entity')?.touched &&
+          userEntityForm.get('id_Entity')?.invalid){
+          <p class="mt-1 text-sm text-red-400 flex items-center gap-1">
+            <span class="font-medium">⚠</span>
+            L'entité est requise
+          </p>
+          }
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+        (click)="isUpdate ? updateUserEntity() : addUserEntity()"
+      >
+        {{ isUpdate ? "Modifier" : "Ajouter" }}
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,9 +1,9 @@
 <div
-  class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default"
+  class="relative overflow-x-auto bg-[#042940] shadow-md rounded-lg border border-[#033049]"
 >
-  <table class="w-full text-sm text-left rtl:text-right text-body">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-300">
     <thead
-      class="text-sm text-body bg-neutral-secondary-soft border-b rounded-base border-default"
+      class="text-xs text-white uppercase bg-[#042940] border-b border-[#033049]"
     >
       <tr>
         <th scope="col" class="px-6 py-3 font-medium">username</th>
@@ -13,10 +13,10 @@
     </thead>
     <tbody>
       @for(user of userStateService.users();track $index ){
-      <tr class="bg-neutral-primary border-b border-default">
+      <tr class="bg-[#042940] border-b border-[#033049] hover:bg-[#033049]">
         <th
           scope="row"
-          class="px-6 py-4 font-medium text-heading whitespace-nowrap"
+          class="px-6 py-4 font-medium text-white whitespace-nowrap"
         >
           {{ user.username }}
         </th>
@@ -27,14 +27,14 @@
           <div class="flex">
             <button
               type="button"
-              class="text-green-700 bg-green-100 border border-green-700 hover:bg-green-700 hover:text-white focus:ring-4 focus:ring-green-300 font-medium leading-5 rounded-base text-xs px-3 py-1.5 focus:outline-none mr-2"
+              class="text-green-400 bg-green-900/30 border border-green-700 hover:bg-green-700 hover:text-white focus:ring-4 focus:ring-green-800 font-medium leading-5 rounded-base text-xs px-3 py-1.5 focus:outline-none mr-2"
               (click)="getDetails(user.id_User)"
             >
               Detail
             </button>
             <button
               type="button"
-              class="text-fg-brand mr-2 bg-neutral-primary border border-brand hover:bg-brand hover:text-white focus:ring-4 focus:ring-brand-subtle font-medium leading-5 rounded-base text-xs px-3 py-1.5 focus:outline-none"
+              class="text-[#6A64F1] mr-2 bg-[#042940] border border-[#6A64F1] hover:bg-[#6A64F1] hover:text-white focus:ring-4 focus:ring-blue-900 font-medium leading-5 rounded-base text-xs px-3 py-1.5 focus:outline-none"
               (click)="navigToFom(user.id_User)"
             >
               Modifier
@@ -42,7 +42,7 @@
 
             <button
               type="button"
-              class="text-red-700 bg-red-100 border border-red-700 hover:bg-red-700 hover:text-white focus:ring-4 focus:ring-red-300 font-medium leading-5 rounded-base text-xs px-3 py-1.5 focus:outline-none"
+              class="text-red-400 bg-red-900/30 border border-red-700 hover:bg-red-700 hover:text-white focus:ring-4 focus:ring-red-900 font-medium leading-5 rounded-base text-xs px-3 py-1.5 focus:outline-none"
               (click)="deleteUser(user.id_User)"
             >
               Supprimer

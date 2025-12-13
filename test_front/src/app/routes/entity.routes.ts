@@ -16,6 +16,13 @@ export const entityRoute: Routes = [
       ).then((m) => m.EntityFormComponent),
   },
   {
+    path: 'modifie-entity/:id',
+    loadComponent: () =>
+      import(
+        '../features/entity/components/entity-form/entity-form.component'
+      ).then((m) => m.EntityFormComponent),
+  },
+  {
     path: '',
     redirectTo: 'list-user',
     pathMatch: 'full',

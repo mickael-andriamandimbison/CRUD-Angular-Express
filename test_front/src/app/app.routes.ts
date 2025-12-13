@@ -11,7 +11,7 @@ export const routes: Routes = [
       import('./routes/entity.routes').then((r) => r.entityRoute),
   },
   {
-    path: 'users',
+    path: 'user-entity',
     loadChildren: () =>
       import('./routes/user_entity.routes').then((r) => r.userEntityRoute),
   },

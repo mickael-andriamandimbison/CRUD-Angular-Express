@@ -1,1 +1,60 @@
-<p>entity-form works!</p>
+<div class="flex items-center justify-center p-12">
+  <div class="mx-auto w-full max-w-[550px]">
+    <form class="max-w-sm mx-auto" [formGroup]="entityForm">
+      <div class="mb-5">
+        <div class="mb-5">
+          <label
+            for="entityname"
+            class="block mb-2.5 text-sm text-white font-medium text-heading"
+            >Nom de l'entité</label
+          >
+          <input
+            formControlName="entityname"
+            type="text"
+            id="entityname"
+            class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+            placeholder="Nom de l'entité"
+            required
+          />
+          @if ( entityForm.get('entityname')?.touched &&
+          entityForm.get('entityname')?.hasError('required') ) {
+          <p class="mt-1 text-sm text-red-400 flex items-center gap-1">
+            <span class="font-medium">⚠</span>
+            Le nom de l'entité est obligatoire
+          </p>
+          }
+        </div>
+        <div class="mb-5">
+          <label
+            for="description"
+            class="block mb-2.5 text-sm text-white font-medium text-heading"
+            >Description</label
+          >
+          <input
+            formControlName="description"
+            type="text"
+            id="description"
+            class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+            placeholder="Description"
+            required
+          />
+          @if ( entityForm.get('description')?.touched &&
+          entityForm.get('description')?.hasError('required') ) {
+          <p class="mt-1 text-sm text-red-400 flex items-center gap-1">
+            <span class="font-medium">⚠</span>
+            La description est obligatoire
+          </p>
+          }
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+        (click)="isUpdate ? updateEntity() : addEntity()"
+      >
+        {{ isUpdate ? "Modifier" : "Ajouter" }}
+      </button>
+    </form>
+  </div>
+</div>

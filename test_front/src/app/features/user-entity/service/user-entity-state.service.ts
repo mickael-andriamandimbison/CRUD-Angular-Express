@@ -1,30 +1,30 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { EntityService } from '../../../core/services/entity/entity.service';
+import { UserEntityService } from '../../../core/services/user-entity/user-entity.service';
 import { map } from 'rxjs';
-import { IEntity } from '../../../core/interfaces/Entity';
+import { IUserEntity } from '../../../core/interfaces/UserEntity';
 import { IApiRes } from '../../../core/interfaces/ApiResponse';
 
 @Injectable({
   providedIn: 'root',
 })
-export class EntityStateService {
-  private _entityService = inject(EntityService);
+export class UserEntityStateService {
+  private _userEntityService = inject(UserEntityService);
 
   loading = signal(false);
-  entitys = signal<IEntity[]>([]);
+  userEntities = signal<IUserEntity[]>([]);
   error = signal<string | null>(null);
-  selectedEntity = signal<IEntity | null>(null);
+  selectedUserEntity = signal<IUserEntity | null>(null);
   successMsg = signal<string | null>(null);
 
   public getAll() {
     this.loading.set(true);
     this.error.set(null);
 
-    this._entityService.getAll().subscribe({
+    this._userEntityService.getAll().subscribe({
       next: (res) => {
         this.loading.set(false);
-        const entityList = Array.isArray(res.data) ? res.data : [];
-        this.entitys.set(entityList);
+        const list = Array.isArray(res.data) ? res.data : [];
+        this.userEntities.set(list);
       },
       error: (err) => {
         this.loading.set(false);
@@ -37,10 +37,10 @@ export class EntityStateService {
     this.loading.set(true);
     this.error.set(null);
 
-    this._entityService.getById(id).subscribe({
+    this._userEntityService.getById(id).subscribe({
       next: (res) => {
         this.loading.set(false);
-        this.selectedEntity.set(res.data || null);
+        this.selectedUserEntity.set(res.data || null);
       },
       error: (err) => {
         this.loading.set(false);
@@ -49,17 +49,17 @@ export class EntityStateService {
     });
   }
 
-  public addEntity(entity: IApiRes) {
+  public addUserEntity(data: IApiRes) {
     this.loading.set(true);
     this.error.set(null);
 
-    this._entityService
-      .create(entity)
-      .pipe(map((r) => r.data[0]))
+    this._userEntityService
+      .create(data)
+      .pipe(map((r) => r.data))
       .subscribe({
         next: (res) => {
           this.loading.set(false);
-          this.entitys.update((list) => [...list, res]);
+          this.userEntities.update((list) => [...list, res]);
         },
         error: (err) => {
           this.loading.set(false);
@@ -68,16 +68,16 @@ export class EntityStateService {
       });
   }
 
-  public update(id: string, entity: IApiRes) {
+  public update(id: string, data: IApiRes) {
     this.loading.set(true);
     this.error.set(null);
 
-    this._entityService.update(id, entity).subscribe({
+    this._userEntityService.updateById(id, data).subscribe({
       next: (res) => {
         this.loading.set(false);
-        this.entitys.update((list) =>
+        this.userEntities.update((list) =>
           list.map((item) =>
-            item.id_Entity === id ? { ...item, ...entity } : item
+            item.id_userEntity === id ? { ...item, ...data } : item
           )
         );
       },
@@ -92,16 +92,17 @@ export class EntityStateService {
     this.loading.set(true);
     this.error.set(null);
 
-    this._entityService.delete(id).subscribe({
+    this._userEntityService.deleteById(id).subscribe({
       next: () => {
         this.loading.set(false);
         this.successMsg.set('Suppression avec succès');
-        this.entitys.update((user)=>user.filter((r)=>r.id_Entity !== id))
+        this.userEntities.update((list) =>
+          list.filter((item) => item.id_userEntity !== id)
+        );
       },
       error: (err) => {
         this.loading.set(false);
         this.error.set(err?.message || 'Erreur inconnue');
-        this.entitys.update((user)=>user.filter((r)=>r.id_Entity !== id))
       },
     });
   }

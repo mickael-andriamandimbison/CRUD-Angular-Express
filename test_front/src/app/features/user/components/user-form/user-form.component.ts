@@ -33,7 +33,7 @@ export class UserFormComponent implements OnInit {
   private initForm() {
     this.userForm = this.fb.group({
       username: ['', Validators.required],
-      password: ['', Validators.required],
+      password: ['', [Validators.required,Validators.minLength(8)]],
       email: ['', [Validators.required, Validators.email]],
     });
   }
@@ -50,6 +50,8 @@ export class UserFormComponent implements OnInit {
     let id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.userStateService.getUserByid(id);
+    }else{
+      this.userStateService.selectedUser.set(null)
     }
   }
 

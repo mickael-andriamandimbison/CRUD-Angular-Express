@@ -1,73 +1,164 @@
 <!-- Bouton pour ouvrir/fermer la sidebar sur mobile -->
-<button data-drawer-target="sidebar-multi-level-sidebar" data-drawer-toggle="sidebar-multi-level-sidebar"
-        aria-controls="sidebar-multi-level-sidebar" type="button"
-        class="text-white bg-[#021f2d] hover:bg-[#033049] focus:ring-4 focus:ring-[#033049] font-medium rounded-lg text-sm p-2 inline-flex sm:hidden">
-   <span class="sr-only">Open sidebar</span>
-   <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h10"/>
-   </svg>
+<button
+  data-drawer-target="sidebar-multi-level-sidebar"
+  data-drawer-toggle="sidebar-multi-level-sidebar"
+  aria-controls="sidebar-multi-level-sidebar"
+  type="button"
+  class="text-white bg-[#021f2d] hover:bg-[#033049] focus:ring-4 focus:ring-[#033049] font-medium rounded-lg text-sm p-2 inline-flex sm:hidden"
+>
+  <span class="sr-only">Open sidebar</span>
+  <svg
+    class="w-6 h-6"
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h10" />
+  </svg>
 </button>
 
 <!-- Sidebar -->
-<aside id="sidebar-multi-level-sidebar"
-       class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0
-              bg-[#042940] text-gray-100 border-r border-[#033049]"
-       aria-label="Sidebar">
-   <div class="h-full px-3 py-4 overflow-y-auto">
-      <ul class="space-y-2 font-medium">
+<aside
+  id="sidebar-multi-level-sidebar"
+  class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-[#042940] text-gray-100 border-r border-[#033049]"
+  aria-label="Sidebar"
+>
+  <div class="h-full px-3 py-4 overflow-y-auto">
+    <ul class="space-y-2 font-medium">
+      <li>
+        <button
+          type="button"
+          class="flex items-center w-full justify-between px-2 py-2 rounded-lg hover:bg-[#033049] group"
+          aria-controls="dropdown-user"
+          data-collapse-toggle="dropdown-user"
+        >
+          <span class="flex-1 ms-3 text-left">User</span>
+          <svg
+            class="w-5 h-5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m19 9-7 7-7-7"
+            />
+          </svg>
+        </button>
+        <ul id="dropdown-user" class="hidden py-2 space-y-2">
+          <li>
+            <a
+              routerLink="/users/list-user"
+              class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]"
+              >Liste User</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/users/ajout-user"
+              class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]"
+              >Ajout User</a
+            >
+          </li>
+        </ul>
+      </li>
 
-         <!-- User Dropdown -->
-         <li>
-            <button type="button" class="flex items-center w-full justify-between px-2 py-2 rounded-lg hover:bg-[#033049] group"
-                    aria-controls="dropdown-user" data-collapse-toggle="dropdown-user">
-               <span class="flex-1 ms-3 text-left">User</span>
-               <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/>
-               </svg>
-            </button>
-            <ul id="dropdown-user" class="hidden py-2 space-y-2">
-               <li><a routerLink="/users/list-user" class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]">Liste User</a></li>
-               <li><a routerLink="/users/ajout-user" class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]">Ajout User</a></li>
-            </ul>
-         </li>
+      <li>
+        <button
+          type="button"
+          class="flex items-center w-full justify-between px-2 py-2 rounded-lg hover:bg-[#033049] group"
+          aria-controls="dropdown-entity"
+          data-collapse-toggle="dropdown-entity"
+        >
+          <span class="flex-1 ms-3 text-left">Entity</span>
+          <svg
+            class="w-5 h-5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m19 9-7 7-7-7"
+            />
+          </svg>
+        </button>
+        <ul id="dropdown-entity" class="hidden py-2 space-y-2">
+          <li>
+            <a
+              [routerLink]="'/entity/list-entity'"
+              class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]"
+              >Liste Entity</a
+            >
+          </li>
+          <li>
+            <a
+              [routerLink]="'/entity/ajout-entity'"
+              class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]"
+              >Ajout Entity</a
+            >
+          </li>
+        </ul>
+      </li>
 
-         <!-- Entity Dropdown -->
-         <li>
-            <button type="button" class="flex items-center w-full justify-between px-2 py-2 rounded-lg hover:bg-[#033049] group"
-                    aria-controls="dropdown-entity" data-collapse-toggle="dropdown-entity">
-               <span class="flex-1 ms-3 text-left">Entity</span>
-               <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/>
-               </svg>
-            </button>
-            <ul id="dropdown-entity" class="hidden py-2 space-y-2">
-               <li><a [routerLink]="'/entity/list-entity'" class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]">Liste Entity</a></li>
-               <li><a [routerLink]="'/entity/ajout-entity'" class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]">Ajout Entity</a></li>
-            </ul>
-         </li>
-
-         <!-- UserEntity Dropdown
-         <li>
-            <button type="button" class="flex items-center w-full justify-between px-2 py-2 rounded-lg hover:bg-[#033049] group"
-                    aria-controls="dropdown-user-entity" data-collapse-toggle="dropdown-user-entity">
-               <span class="flex-1 ms-3 text-left">UserEntity</span>
-               <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/>
-               </svg>
-            </button>
-            <ul id="dropdown-user-entity" class="hidden py-2 space-y-2">
-               <li><a routerLink="/user-entity/list-user" class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]">Liste UserEntity</a></li>
-               <li><a routerLink="/user-entity/add" class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]">Ajout UserEntity</a></li>
-            </ul>
-         </li> -->
-
-      </ul>
-   </div>
+      <li>
+        <button
+          type="button"
+          class="flex items-center w-full justify-between px-2 py-2 rounded-lg hover:bg-[#033049] group"
+          aria-controls="dropdown-user-entity"
+          data-collapse-toggle="dropdown-user-entity"
+        >
+          <span class="flex-1 ms-3 text-left">UserEntity</span>
+          <svg
+            class="w-5 h-5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m19 9-7 7-7-7"
+            />
+          </svg>
+        </button>
+        <ul id="dropdown-user-entity" class="hidden py-2 space-y-2">
+          <li>
+            <a
+              [routerLink]="'/user-entity/list-user'"
+              class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]"
+              >Liste UserEntity</a
+            >
+          </li>
+          <li>
+            <a
+              [routerLink]="'/user-entity/ajout-user-entity'"
+              class="pl-10 block px-2 py-1 rounded hover:bg-[#033049]"
+              >Ajout UserEntity</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 </aside>
 
 <!-- Contenu principal -->
 <div class="p-4 sm:ml-64 bg-[#021f2d] min-h-screen text-gray-100">
-   <div class="p-4 border border-[#033049] border-dashed rounded-lg">
-      <router-outlet></router-outlet>
-   </div>
+  <div class="p-4 border border-[#033049] border-dashed rounded-lg">
+    <router-outlet></router-outlet>
+  </div>
 </div>
